@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { TextLoop } from "@/components/site/text-loop"
+import { cn } from "@/lib/utils"
 
 const offers =
   "WEBSITES FROM ₹500  ·  BUSINESS SITES  ·  ONLINE STORES  ·  PORTFOLIOS  ·  LANDING PAGES  ·  BOOKING SITES  ·  "
@@ -22,7 +23,7 @@ function RibbonTrack({
       aria-hidden="true"
     >
       <div
-        className={`ribbon-track${reverse ? "ribbon-track-reverse" : ""}`}
+        className={cn("ribbon-track", reverse && "ribbon-track-reverse")}
         style={{ animationDuration: `${duration}s` }}
       >
         <span>{children}</span>
@@ -47,7 +48,7 @@ export function RibbonHighlights() {
 
   return (
     <section
-      className={`ribbon-stack${paused || reducedMotion ? "is-paused" : ""}`}
+      className={cn("ribbon-stack", (paused || reducedMotion) && "is-paused")}
       id="highlights"
       aria-label="Website project highlights"
     >
@@ -56,30 +57,40 @@ export function RibbonHighlights() {
         online stores, portfolios, landing pages, and booking websites.
       </p>
       {textLoop ? (
-        <TextLoop
-          text="WEBSITES FROM ₹500"
-          shape="wave"
-          speed={90}
-          direction="forward"
-          separator="✦"
-          curviness={90}
-          tilt={0}
-          fontSize={46}
-          fontWeight={800}
-          letterSpacing={2}
-          uppercase
-          ribbonColor="#5227ff"
-          ribbonWidth={86}
-          pauseOnHover
-          paused={paused || reducedMotion}
-        />
-      ) : (
         <>
+          <div className="ribbon-mobile-fallback" aria-hidden="true">
+            <RibbonTrack duration={30}>{offers}</RibbonTrack>
+            <RibbonTrack reverse duration={36}>
+              {benefits}
+            </RibbonTrack>
+          </div>
+          <div className="ribbon-desktop-loop">
+            <TextLoop
+              text="WEBSITES FROM ₹500"
+              shape="wave"
+              speed={90}
+              direction="forward"
+              separator="✦"
+              curviness={90}
+              tilt={0}
+              fontSize={46}
+              fontWeight={800}
+              letterSpacing={2}
+              uppercase
+              ribbonColor="#5227ff"
+              ribbonWidth={86}
+              pauseOnHover
+              paused={paused || reducedMotion}
+            />
+          </div>
+        </>
+      ) : (
+        <div className="ribbon-classic-bands">
           <RibbonTrack duration={30}>{offers}</RibbonTrack>
           <RibbonTrack reverse duration={36}>
             {benefits}
           </RibbonTrack>
-        </>
+        </div>
       )}
       <div className="ribbon-controls">
         <Button

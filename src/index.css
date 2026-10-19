@@ -104,6 +104,10 @@ textarea:focus-visible,
   font-size: 12px;
 }
 
+.ribbon-mobile-fallback {
+  display: none;
+}
+
 .service {
   min-height: 275px;
 }
@@ -298,6 +302,26 @@ textarea:focus-visible,
 }
 
 @media (max-width: 800px) {
+  .ribbon-mobile-fallback {
+    display: block;
+  }
+
+  .ribbon-desktop-loop {
+    display: none;
+  }
+
+  .ribbon-mobile-fallback .ribbon-band,
+  .ribbon-classic-bands .ribbon-band {
+    left: auto;
+    width: 100%;
+    transform: none;
+  }
+
+  .ribbon-mobile-fallback .ribbon-band-green,
+  .ribbon-classic-bands .ribbon-band-green {
+    transform: none;
+  }
+
   .menu {
     display: inline-flex;
   }
