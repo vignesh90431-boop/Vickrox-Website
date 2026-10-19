@@ -1,0 +1,402 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/geist";
+@import "../styles.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-heading: var(--font-sans);
+  --font-sans: "Geist Variable", sans-serif;
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+}
+
+:root {
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  color-scheme: light;
+  --ink: #111318;
+  --muted: #5e6470;
+  --paper: #f8fafc;
+  --green: #c7ff38;
+  --purple: #6548f5;
+  --orange: #ff7a1a;
+  --yellow: #ffe34f;
+  --line: #e4e7ec;
+  --white: #fff;
+  --background: #f8fafc;
+  --foreground: #111318;
+  --card: #fff;
+  --card-foreground: #111318;
+  --popover: #fff;
+  --popover-foreground: #111318;
+  --primary: #6548f5;
+  --primary-foreground: #fff;
+  --secondary: #eef0f5;
+  --secondary-foreground: #111318;
+  --muted-foreground: #5e6470;
+  --accent: #f0efff;
+  --accent-foreground: #111318;
+  --destructive: #b42318;
+  --border: #e4e7ec;
+  --input: #c9ced8;
+  --ring: #6548f5;
+  --radius: 0.75rem;
+}
+
+html {
+  scroll-padding-top: 18px;
+}
+
+body {
+  min-width: 0;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+[role="combobox"]:focus-visible {
+  outline: 3px solid #2b1b9a;
+  outline-offset: 3px;
+}
+
+.site-footer {
+  padding: 30px 0 38px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  color: #626774;
+  font-size: 12px;
+}
+
+.service {
+  min-height: 275px;
+}
+
+.service-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 25px 25px 8px;
+}
+
+.service .num {
+  height: auto;
+  width: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: #747986;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.service .symbol {
+  margin: 10px 0 8px;
+}
+
+.service .symbol.green {
+  background: #e9ffb1;
+}
+
+.service .symbol.orange {
+  background: #ffe2ce;
+}
+
+.service .symbol.yellow {
+  background: #fff3a4;
+}
+
+.service-title {
+  font-size: 21px;
+  font-weight: 900;
+  letter-spacing: -0.7px;
+}
+
+.service-content {
+  padding: 0 25px 8px;
+}
+
+.service-content p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.service-footer {
+  margin-top: auto;
+  padding: 0 25px 18px;
+  border: 0;
+  background: transparent;
+}
+
+.service-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  color: var(--purple);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.service-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+.why-item svg {
+  width: 22px;
+  height: 22px;
+  color: var(--green);
+}
+
+.navcta,
+.btn,
+.chat-toggle,
+.chat-close {
+  height: auto;
+}
+
+.navcta {
+  min-height: 46px;
+}
+
+.navcta svg,
+.btn svg {
+  width: 17px;
+  height: 17px;
+}
+
+.menu {
+  display: none;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.form-field {
+  gap: 8px;
+}
+
+.form-field label span {
+  color: #555b4d;
+  font-weight: 400;
+}
+
+.form-field input,
+.form-field textarea,
+.form-select {
+  min-height: 46px;
+  width: 100%;
+  border: 1px solid #737d56;
+  border-radius: 9px;
+  background: #fff;
+  color: var(--ink);
+  padding: 10px 12px;
+  font-size: 16px;
+}
+
+.form-field textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.project-submit,
+.email-draft {
+  width: 100%;
+  min-height: 48px;
+}
+
+.email-draft {
+  color: var(--ink);
+}
+
+.privacy-note {
+  margin: 0;
+  color: #555b4d;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.contact-actions {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.contact-actions .btn {
+  min-height: 46px;
+}
+
+.chat-toggle {
+  min-height: 48px;
+}
+
+.chat-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+.chat-close {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.chat-form input {
+  min-height: 44px;
+}
+
+.chat-form button {
+  min-width: 56px;
+  min-height: 44px;
+}
+
+.chat-prompts button {
+  height: auto;
+  min-height: 40px;
+  white-space: normal;
+}
+
+.ribbon-motion {
+  height: auto;
+}
+
+@media (max-width: 800px) {
+  .menu {
+    display: inline-flex;
+  }
+
+  .navlinks {
+    z-index: 20;
+  }
+
+  .contact {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .contact-actions {
+    grid-column: auto;
+    flex-direction: row;
+  }
+
+  .service {
+    min-height: 250px;
+  }
+
+  .service-header {
+    padding: 25px 25px 8px;
+  }
+}
+
+@media (max-width: 420px) {
+  .wrap {
+    width: min(1160px, calc(100% - 28px));
+  }
+
+  .hero h1 {
+    font-size: 48px;
+    overflow-wrap: anywhere;
+  }
+
+  .hero-grid,
+  .hero-grid > * {
+    min-width: 0;
+  }
+
+  .browser {
+    width: 100%;
+    min-width: 0;
+    transform: none;
+  }
+
+  .browserbody {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .mini-card {
+    min-width: 0;
+    padding: 12px;
+  }
+
+  .mini-card h3 {
+    font-size: 17px;
+    overflow-wrap: anywhere;
+  }
+
+  .ribbon-band,
+  .ribbon-band-green {
+    left: 0;
+    width: 100%;
+    transform: none;
+  }
+
+  .contact {
+    min-width: 0;
+    grid-template-columns: minmax(0, 1fr);
+    padding: 24px;
+  }
+
+  .project-form {
+    min-width: 0;
+    padding: 14px;
+  }
+
+  .form-field input,
+  .form-field textarea,
+  .form-select {
+    min-width: 0;
+  }
+
+  .contact-actions {
+    flex-direction: column;
+  }
+
+  .chat-panel {
+    height: min(450px, calc(100vh - 90px));
+  }
+}
+
+@media (min-width: 600px) and (max-width: 800px) {
+  .services {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
